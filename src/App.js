@@ -613,7 +613,27 @@ import FixedFutureExpenses from './components/FixedFutureExpenses.jsx';
 import AdditionalExpensesList from './components/AdditionalExpensesList.jsx';
 import AddExpenseModal from './components/modals/AddExpenseModal.jsx';
 import ResultsDisplaySection from './components/ResultsDisplaySection.jsx';
-// No longer importing CURRENT_YEAR from constants as it's calculated dynamically in the hook
+import {
+    APP_TITLE,
+    ERROR_ALERT_TITLE,
+    PERSONAL_FINANCIAL_GOALS_HEADER,
+    HUSBAND_CURRENT_AGE_LABEL,
+    HUSBAND_RETIREMENT_AGE_LABEL,
+    HUSBAND_LIFESPAN_LABEL,
+    CURRENT_MONTHLY_EXPENSE_LABEL,
+    HUSBAND_INVESTMENTS_HEADER,
+    LUMPSUM_EQUITY_LABEL,
+    SIP_EQUITY_LABEL,
+    PF_CURRENT_AMOUNT_LABEL,
+    PF_MONTHLY_CONTRIBUTION_LABEL,
+    BANK_FD_CURRENT_AMOUNT_LABEL,
+    WIFE_INVESTMENTS_HEADER,
+    FIXED_FUTURE_EXPENSES_HEADER,
+    ADD_NEW_FUTURE_EXPENSE_BUTTON,
+    ADDITIONAL_FUTURE_EXPENSES_HEADER,
+    CALCULATE_BUTTON_TEXT
+} from './utils/strings.js';
+
 
 // Main App component for the Retirement Corpus Calculator
 function App() {
@@ -645,7 +665,7 @@ function App() {
         additionalExpenses, setAdditionalExpenses,
         nextExpenseId, setNextExpenseId,
         // Results
-        errorMessage, // Removed setErrorMessage from destructuring
+        errorMessage,
         corpusNeeded, availableFunds, shortfall, requiredSip,
         // Functions
         calculateCorpus
@@ -673,13 +693,13 @@ function App() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 font-sans text-gray-800 flex items-center justify-center">
             <div className="max-w-3xl w-full bg-white shadow-xl rounded-2xl p-6 md:p-8 space-y-6">
-                <h1 className="text-3xl md:text-4xl font-extrabold text-center text-indigo-700 mb-6">
-                    Fire Calculator
+                <h1 className="text-3xl md:text-4xl font-extrabold text-center text-indigo-700 mb-18">
+                    {APP_TITLE}
                 </h1>
 
                 {errorMessage && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-4" role="alert">
-                        <strong className="font-bold">Error!</strong>
+                        <strong className="font-bold">{ERROR_ALERT_TITLE}</strong>
                         <span className="block sm:inline ml-2">{errorMessage}</span>
                     </div>
                 )}
@@ -689,6 +709,11 @@ function App() {
                     husbandRetirementAge={husbandRetirementAge} setHusbandRetirementAge={setHusbandRetirementAge}
                     husbandLifespan={husbandLifespan} setHusbandLifespan={setHusbandLifespan}
                     currentExpenseMonthly={currentExpenseMonthly} setCurrentExpenseMonthly={setCurrentExpenseMonthly}
+                    header={PERSONAL_FINANCIAL_GOALS_HEADER}
+                    labelHusbandCurrentAge={HUSBAND_CURRENT_AGE_LABEL}
+                    labelHusbandRetirementAge={HUSBAND_RETIREMENT_AGE_LABEL}
+                    labelHusbandLifespan={HUSBAND_LIFESPAN_LABEL}
+                    labelCurrentMonthlyExpense={CURRENT_MONTHLY_EXPENSE_LABEL}
                 />
 
                 <GrowthInflationRates
@@ -705,12 +730,22 @@ function App() {
                     husbandPfCurrent={husbandPfCurrent} setHusbandPfCurrent={setHusbandPfCurrent}
                     husbandPfMonthlyContribution={husbandPfMonthlyContribution} setHusbandPfMonthlyContribution={setHusbandPfMonthlyContribution}
                     husbandBankFdCurrent={husbandBankFdCurrent} setHusbandBankFdCurrent={setHusbandBankFdCurrent}
+                    header={HUSBAND_INVESTMENTS_HEADER}
+                    labelLumpsumEquity={LUMPSUM_EQUITY_LABEL}
+                    labelSipEquity={SIP_EQUITY_LABEL}
+                    labelPfCurrentAmount={PF_CURRENT_AMOUNT_LABEL}
+                    labelPfMonthlyContribution={PF_MONTHLY_CONTRIBUTION_LABEL}
+                    labelBankFdCurrentAmount={BANK_FD_CURRENT_AMOUNT_LABEL}
                 />
 
                 <WifeInvestments
                     wifeLumpsumEquity={wifeLumpsumEquity} setWifeLumpsumEquity={setWifeLumpsumEquity}
                     wifeSipEquity={wifeSipEquity} setWifeSipEquity={setWifeSipEquity}
                     wifeBankFdCurrent={wifeBankFdCurrent} setWifeBankFdCurrent={setWifeBankFdCurrent}
+                    header={WIFE_INVESTMENTS_HEADER}
+                    labelLumpsumEquity={LUMPSUM_EQUITY_LABEL}
+                    labelSipEquity={SIP_EQUITY_LABEL}
+                    labelBankFdCurrentAmount={BANK_FD_CURRENT_AMOUNT_LABEL}
                 />
 
                 <FixedFutureExpenses
@@ -721,11 +756,13 @@ function App() {
                     daughterMarriageCostCurrent={daughterMarriageCostCurrent} setDaughterMarriageCostCurrent={setDaughterMarriageCostCurrent}
                     daughterMarriageYear={daughterMarriageYear} setDaughterMarriageYear={setDaughterMarriageYear}
                     onAddAdditionalExpense={() => setShowAddExpenseModal(true)} // Pass handler to open modal
+                    header={FIXED_FUTURE_EXPENSES_HEADER}
+                    buttonLabel={ADD_NEW_FUTURE_EXPENSE_BUTTON}
                 />
 
                 {additionalExpenses.length > 0 && (
                     <section className="space-y-5">
-                        <h3 className="text-xl font-semibold text-indigo-600 border-b pb-2 mb-4 mt-8">Additional Future Expenses</h3>
+                        <h3 className="text-xl font-semibold text-indigo-600 border-b pb-2 mb-4 mt-8">{ADDITIONAL_FUTURE_EXPENSES_HEADER}</h3>
                         <AdditionalExpensesList
                             expenses={additionalExpenses}
                             onUpdate={updateAdditionalExpense}
@@ -738,7 +775,7 @@ function App() {
                     onClick={calculateCorpus}
                     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
                 >
-                    Calculate Retirement Corpus
+                    {CALCULATE_BUTTON_TEXT}
                 </button>
 
                 <ResultsDisplaySection
