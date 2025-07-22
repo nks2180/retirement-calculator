@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Retirement Corpus Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+This is a React-based web application designed to help users calculate their estimated retirement corpus. It takes into account various financial inputs such as current age, retirement age, lifespan, monthly expenses, investment growth rates, and future fixed expenses (like home purchase, education, and marriage costs). The calculator then determines the total corpus needed at retirement, the funds available from current investments, and any potential shortfall or surplus, suggesting a required monthly SIP to cover any deficit.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+* **Dynamic Age and Retirement Planning:** Calculates the retirement timeline based on the user's current age and desired retirement age.
+* **Inflation Adjustment:** Accounts for inflation to project future expenses accurately.
+* **Investment Growth Projections:** Incorporates different growth rates for equity, bank FDs, and PF (Provident Fund) for pre-retirement and post-retirement phases.
+* **Tax Considerations:** Applies simplified tax rates to equity, bank FD, and PF returns.
+* **Fixed Future Expense Planning:** Allows users to input and plan for significant future expenses like home purchase, daughter's education, and daughter's marriage, projecting their inflated costs to the relevant years.
+* **Additional Custom Expenses:** Users can add multiple custom future expenses with descriptions, costs, and years.
+* **Shortfall/Surplus Analysis:** Clearly displays the difference between the corpus needed and available funds.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **SIP Recommendation:** Provides a recommended monthly SIP amount to cover any calculated shortfall.
+* **Responsive UI:** Designed with Tailwind CSS for a modern, clean, and responsive user interface that adapts to various screen sizes.
+* **Modular Codebase:** Organized into smaller, reusable React components and a custom hook for better maintainability and readability.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+* **React:** Frontend JavaScript library for building user interfaces.
+* **Tailwind CSS:** A utility-first CSS framework for rapidly building custom designs.
+* **JavaScript (ES6+):** Core programming language.
+* **HTML5:** Structure of the web pages.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Structure
+The project is organized into the following key directories:
+```
+src/
+├── components/
+│   ├── modals/
+│   │   └── AddExpenseModal.jsx     // Modal for adding custom expenses
+│   ├── shared/
+│   │   ├── InputField.jsx          // Reusable input field component
+│   │   └── ResultDisplay.jsx       // Reusable result display component
+│   ├── AdditionalExpensesList.jsx  // Displays list of additional expenses
+│   ├── FixedFutureExpenses.jsx     // Section for fixed future expenses
+│   ├── GrowthInflationRates.jsx    // Section for growth and inflation rates
+│   ├── HusbandInvestments.jsx      // Section for husband's investments
+│   ├── PersonalFinancialGoals.jsx  // Section for personal and financial goals
+│   ├── ResultsDisplaySection.jsx   // Displays calculation results
+│   └── WifeInvestments.jsx         // Section for wife's investments
+├── hooks/
+│   └── useRetirementCalculator.js  // Custom hook encapsulating calculation logic and state
+├── utils/
+│   └── constants.js                // Global constants used across the application
+└── App.js                          // Main application component
+```
