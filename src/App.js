@@ -603,19 +603,17 @@
 // };
 
 // export default App;
-
 import React, { useState } from 'react';
-import useRetirementCalculator from './hooks/useRetirementCalculator';
-import PersonalFinancialGoals from './components/PersonalFinancialGoals';
-import GrowthInflationRates from './components/GrowthInflationRates';
-import HusbandInvestments from './components/HusbandInvestments';
-import WifeInvestments from './components/WifeInvestments';
-import FixedFutureExpenses from './components/FixedFutureExpenses';
-import AdditionalExpensesList from './components/AdditionalExpensesList';
-import AddExpenseModal from './components/modals/AddExpenseModal';
-// Removed: import { CURRENT_YEAR } from './utils/constants'; // No longer needed here
-import ResultsDisplaySection from './components/ResultsDisplaySection';
-
+import useRetirementCalculator from './hooks/useRetirementCalculator.js';
+import PersonalFinancialGoals from './components/PersonalFinancialGoals.jsx';
+import GrowthInflationRates from './components/GrowthInflationRates.jsx';
+import HusbandInvestments from './components/HusbandInvestments.jsx';
+import WifeInvestments from './components/WifeInvestments.jsx';
+import FixedFutureExpenses from './components/FixedFutureExpenses.jsx';
+import AdditionalExpensesList from './components/AdditionalExpensesList.jsx';
+import AddExpenseModal from './components/modals/AddExpenseModal.jsx';
+import ResultsDisplaySection from './components/ResultsDisplaySection.jsx';
+// No longer importing CURRENT_YEAR from constants as it's calculated dynamically in the hook
 
 // Main App component for the Retirement Corpus Calculator
 function App() {
@@ -647,7 +645,8 @@ function App() {
         additionalExpenses, setAdditionalExpenses,
         nextExpenseId, setNextExpenseId,
         // Results
-        corpusNeeded, availableFunds, shortfall, requiredSip, errorMessage, setErrorMessage,
+        errorMessage, // Removed setErrorMessage from destructuring
+        corpusNeeded, availableFunds, shortfall, requiredSip,
         // Functions
         calculateCorpus
     } = useRetirementCalculator();
@@ -754,7 +753,7 @@ function App() {
                     <AddExpenseModal
                         onClose={() => setShowAddExpenseModal(false)}
                         onAddExpense={handleAddExpense}
-                        // Removed CURRENT_YEAR prop as AddExpenseModal calculates it internally
+                        // CURRENT_YEAR prop is not needed as AddExpenseModal calculates it internally
                     />
                 )}
             </div>
