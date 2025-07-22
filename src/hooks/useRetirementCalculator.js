@@ -175,22 +175,24 @@ const useRetirementCalculator = () => {
 
         // B. Home Purchase - Declare variables at a higher scope
         let inflatedHomeCost = 0;
-        let hPfCurrent_atHomePurchase = 0; // Declared here
-        let hPfSip_atHomePurchase = 0; // Declared here
+        let hPfCurrent_atHomePurchase = 0;
+        let hPfSip_atHomePurchase = 0;
         let totalPfAtHomePurchase = 0;
-        let wLumpsumEquity_atHomePurchase = 0; // Declared here
-        let wSipEquity_atHomePurchase = 0; // Declared here
+        let wLumpsumEquity_atHomePurchase = 0;
+        let wSipEquity_atHomePurchase = 0;
         let totalWifeEquityAtHomePurchase = 0;
-        let husbandLumpsumEquity_atHomePurchase = 0; // Declared here
-        let husbandSipEquity_atHomePurchase = 0; // Declared here
+        let husbandLumpsumEquity_atHomePurchase = 0;
+        let husbandSipEquity_atHomePurchase = 0;
         let totalHusbandEquityAtHomePurchase = 0;
         let wifeEquityUsedForHome = 0;
         let husbandEquityUsedForHome = 0;
         let remainingHusbandEquity_atHomePurchase = 0;
         let remainingWifeEquity_atHomePurchase = 0;
         let yearsAfterHomePurchase = 0;
+        let yearsToHomePurchase = 0; // Declared here
 
         if (homePurchaseYear >= currentYear && homePurchaseYear <= actualRetirementYear) {
+            yearsToHomePurchase = homePurchaseYear - currentYear; // Assigned here
             inflatedHomeCost = calculateFV(homePurchaseCostCurrent, inflation, yearsToHomePurchase);
 
             hPfCurrent_atHomePurchase = calculateFV(husbandPfCurrent, pfGrowth, yearsToHomePurchase);
@@ -240,6 +242,7 @@ const useRetirementCalculator = () => {
 
         } else if (homePurchaseYear > actualRetirementYear) {
             // Home purchase is after retirement, handled as a post-retirement expense.
+            yearsToHomePurchase = homePurchaseYear - currentYear; // Assigned here for post-retirement calculation
         }
 
         // D. Total Available Funds at Retirement Year (After Taxes)
