@@ -674,7 +674,7 @@ function App() {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 font-sans text-gray-800 flex items-center justify-center">
             <div className="max-w-3xl w-full bg-white shadow-xl rounded-2xl p-6 md:p-8 space-y-6">
                 <h1 className="text-3xl md:text-4xl font-extrabold text-center text-indigo-700 mb-6">
-                    Retirement Corpus Calculator
+                    Fire Calculator
                 </h1>
 
                 {errorMessage && (
