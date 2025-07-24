@@ -1,4 +1,4 @@
-# Retirement Corpus Calculator
+# FIRE Corpus Calculator
 
 ## Project Overview
 
