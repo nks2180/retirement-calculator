@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-This is a React-based web application designed to help users calculate their estimated retirement corpus. It takes into account various financial inputs such as current age, retirement age, lifespan, monthly expenses, investment growth rates, and future fixed expenses (like home purchase, education, and marriage costs). The calculator then determines the total corpus needed at retirement, the funds available from current investments, and any potential shortfall or surplus, suggesting a required monthly SIP to cover any deficit.
+This is a React-based web application designed to help users calculate their estimated FIRE corpus. It takes into account various financial inputs such as current age, retirement age, lifespan, monthly expenses, investment growth rates, and future fixed expenses (like home purchase, education, and marriage costs). The calculator then determines the total corpus needed at retirement, the funds available from current investments, and any potential shortfall or surplus, suggesting a required monthly SIP to cover any deficit.
 
 ## Features
 
-* **Dynamic Age and Retirement Planning:** Calculates the retirement timeline based on the user's current age and desired retirement age.
+* **Dynamic Age and Retirement Planning:** Calculates the FIRE timeline based on the user's current age and desired retirement age.
 * **Inflation Adjustment:** Accounts for inflation to project future expenses accurately.
 * **Investment Growth Projections:** Incorporates different growth rates for equity, bank FDs, and PF (Provident Fund) for pre-retirement and post-retirement phases.
 * **Tax Considerations:** Applies simplified tax rates to equity, bank FD, and PF returns.
